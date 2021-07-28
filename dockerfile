@@ -8,7 +8,7 @@ RUN pip3 install -r requirements.txt
 
 COPY input4training /input_data_training
 COPY trained_model4prediction /models
-COPY input4prediction_evaluation /input_gdata_evaluation
+COPY input4prediction_evaluation /input_data_evaluation
 RUN mkdir outputs
 
 COPY dataPrep.py /dataPrep.py
