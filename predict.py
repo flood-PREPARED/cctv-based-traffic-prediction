@@ -125,13 +125,35 @@ def main(camera_name):
                         #plt.show()
 
 
+def list_available_models():
+    """
+    List the available models
+    :return:
+    """
+    # set path to models
+    model_loc = os.path.abspath(os.path.join(os.getcwd(), 'models'))
+
+    return [f for f in os.listdir(model_loc) if os.path.isfile(os.path.join(model_loc, f))]
+
+
+def ident_camera_name(model_name):
+    """
+    Parse model name to get camera name
+    :param
+    :return:
+    """
+
+    model_name = model_name.split('_')
+    return model_name[3]+'_'+model_name[4]
+
+
 def check_model_exists(camera_name):
     """
     Check the model exists for camera
     :return:
     """
     model_loc = os.path.abspath(os.path.join(os.getcwd(), 'models'))
-    models = [f for f in os.listdir(model_loc) if os.path.isfile(os.path.join(model_loc, f))]
+    models = list_available_models()
 
     for model in models:
         print('Looking for model for %s' %camera_name)
@@ -141,4 +163,24 @@ def check_model_exists(camera_name):
 
     return False
 
-main('NC_B1307B1')
+
+#def __main__():
+#    """
+#
+#    :return:
+#    """
+
+# fetching env setting for 'camera'
+camera_name = os.getenv('camera')
+
+# if no env passed, set to run for all cameras
+if camera_name is None:
+    print('Camera name not passed so setting to run for all')
+    camera_name = 'all'
+
+if camera_name == 'all':
+    models = list_available_models()
+    for model in models:
+        main(camera_name=ident_camera_name(model))
+else:
+    main(camera_name=camera_name)
