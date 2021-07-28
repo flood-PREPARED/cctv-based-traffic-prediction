@@ -6,11 +6,13 @@ RUN apt-get install vim -y
 COPY requirements.txt /
 RUN pip3 install -r requirements.txt
 
-COPY input4training /data_training_input
+COPY input4training /input_data_training
 COPY trained_model4prediction /models
+COPY input4prediction_evaluation /input_gdata_evaluation
+RUN mkdir outputs
 
 COPY dataPrep.py /dataPrep.py
 COPY predict.py /predict.py
 COPY train_multicam2.py /train.py
 
-CMD ["python", "-u", "/run.py"]
+CMD ["python", "-u", "/predict.py"]

@@ -10,12 +10,12 @@ import time
 import os
 # models[target_cam][nearbyLimit][lag][lead] = {'model': model, 'mape': mape}
 
-path1='..'
+path1 = os.path.abspath(os.path.join(os.getcwd()))
 camera_name = 'NC_B1307B1'
 
-model_path = path1+'/trained_model4prediction/traffic_predictor-PER_PEOPLE-FTP_NC_B1307B1_lag49_20210725_150045.901155_tests2021.pickle'
-input_data_path = path1+'/input4prediction_evaluation/data.csv'
-scv_save_folder = path1 + '/output_from_prediction/'
+model_path = path1+'/models/traffic_predictor-PER_PEOPLE-FTP_NC_B1307B1_lag49_20210725_150045.901155_tests2021.pickle'
+input_data_path = path1+'/input_data_evaluation/data.csv'
+scv_save_folder = path1 + '/outputs'
 
 models = pickle.load(open(model_path,"rb"))
 # print(models)

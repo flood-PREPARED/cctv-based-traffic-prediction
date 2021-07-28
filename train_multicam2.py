@@ -14,7 +14,7 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
-path1='..'
+path1 = os.path.abspath(os.path.join(os.getcwd()))
 print(path1)
 logname = path1+'/log/tpt.log'
 #CarCountsDataPath = path1+'/input4training/dataJan_Aug19.csv'
