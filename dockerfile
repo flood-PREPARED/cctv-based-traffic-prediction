@@ -15,4 +15,4 @@ COPY dataPrep.py /dataPrep.py
 COPY predict.py /predict.py
 COPY train_multicam2.py /train.py
 
-CMD ["python", "-u", "/predict.py"]
+CMD ["python", "-c", "import predict; predict.run()"]
