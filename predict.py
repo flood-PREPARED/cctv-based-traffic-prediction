@@ -121,7 +121,8 @@ def main(camera_name):
                     df_results.plot(kind='line', x='datetimes', y='tests', color='blue', ax=ax)
                     df_results.plot(kind='line', x='datetimes', y='predictions', color='red', ax=ax)
 
-                    df_results.to_csv(scv_save_folder + str(target_cam)+'predictions_4wholeweek.csv', index=False)
+                    print('writing results to: %s' %os.path.join(scv_save_folder, str(target_cam)+'predictions_4wholeweek.csv'))
+                    df_results.to_csv(os.path.join(scv_save_folder, str(target_cam)+'predictions_4wholeweek.csv'), index=False)
                     #plt.show()
 
 
